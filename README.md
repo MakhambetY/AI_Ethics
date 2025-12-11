@@ -128,9 +128,6 @@ This will call `run_all` which iterates configured indicators and target models 
 3. Run `python run.py`.
 4. Inspect `hai_l4_results.json` and `hai_l4_report.md` for results and per-test outputs.
 
-## License
-
-No license file included. Add a `LICENSE` if you want to make the repo public under a specific license (e.g., MIT).
 
 ## Contact / Contributing
 
