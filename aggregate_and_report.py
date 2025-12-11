@@ -98,6 +98,13 @@ def save_json(path: str, obj: Dict):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
 
+def _safe_str(x):
+    if x is None:
+        return ""
+    if isinstance(x, str):
+        return x
+    return json.dumps(x, ensure_ascii=False, indent=2)
+
 def save_markdown(path: str, obj: Dict):
     lines = []
     lines.append("# HAI L4 Evaluation Report (DeepSeek vs LLaMA)\n")
@@ -138,4 +145,4 @@ def save_markdown(path: str, obj: Dict):
                 lines.append(f"- {t.get('test_id')}: score={score} | prompt={t.get('user')}")
 
     with open(path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
+        f.write("\n".join(_safe_str(l) for l in lines))
